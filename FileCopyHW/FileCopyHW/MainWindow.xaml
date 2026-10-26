@@ -1,0 +1,31 @@
+﻿<Window x:Class="FileCopyHW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileCopyHW"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="800">
+    <DockPanel LastChildFill="False">
+        <Grid Margin="5" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label VerticalAlignment="Center">From:</Label>
+            <TextBox Name="srcTextBox" Margin="5" Padding="5" Grid.Column="1"></TextBox>
+            <Button Margin="5" Padding="5" Grid.Column="2" Click="OpenSourceButtonClick">Browse</Button>
+            <Label Grid.Row="1" VerticalAlignment="Center">To:</Label>
+            <TextBox Name="destTextBox" Margin="5" Padding="5" Grid.Row="1" Grid.Column="1"></TextBox>
+            <Button Margin="5" Padding="5" Grid.Row="1" Grid.Column="2" Click="OpenDestButtonClick">Browse</Button>
+        </Grid>
+        <Button Name="startButton" DockPanel.Dock="Top" Padding="10" Margin="5" Click="StartButtonClick">Start</Button>
+        <ProgressBar Name="progress" DockPanel.Dock="Bottom" Height="30" Maximum="100"></ProgressBar>
+        <TextBlock Name="percentText" DockPanel.Dock="Bottom" Margin="5">0 %</TextBlock>
+    </DockPanel>
+</Window>

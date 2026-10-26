@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.Win32;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -29,6 +30,7 @@ public partial class MainWindow : Window
         }
 
         searchButton.IsEnabled = false;
+        saveButton.IsEnabled = false;
         resultTextBox.Clear();
         progress.Value = 0;
 
@@ -61,6 +63,8 @@ public partial class MainWindow : Window
             {
                 resultTextBox.Text = "Word not found";
             }
+
+            saveButton.IsEnabled = found;
             MessageBox.Show("Complete");
         }
         catch (Exception ex)
@@ -96,5 +100,24 @@ public partial class MainWindow : Window
             }
             return count;
         });
+    }
+
+    // зберігає звіт у файл 
+    private async void SaveButtonClick(object sender, RoutedEventArgs e)
+    {
+        SaveFileDialog dialog = new SaveFileDialog();
+        dialog.Filter = "Text file|*.txt";
+        if (dialog.ShowDialog() == true)
+        {
+            try
+            {
+                await File.WriteAllTextAsync(dialog.FileName, resultTextBox.Text);
+                MessageBox.Show("Saved");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

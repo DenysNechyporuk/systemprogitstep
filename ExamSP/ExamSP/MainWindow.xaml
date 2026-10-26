@@ -22,6 +22,7 @@
             <TextBox Name="wordTextBox" Margin="5" Padding="5" Grid.Row="1" Grid.Column="1"></TextBox>
         </Grid>
         <Button Name="searchButton" DockPanel.Dock="Top" Padding="10" Margin="5" Click="SearchButtonClick">Search</Button>
+        <Button Name="saveButton" DockPanel.Dock="Top" Padding="10" Margin="5" IsEnabled="False" Click="SaveButtonClick">Save result</Button>
         <ProgressBar Name="progress" DockPanel.Dock="Bottom" Height="30"></ProgressBar>
         <TextBox Name="resultTextBox" Margin="5" IsReadOnly="True" VerticalScrollBarVisibility="Auto"></TextBox>
     </DockPanel>
